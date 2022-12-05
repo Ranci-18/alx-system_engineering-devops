@@ -1,2 +1,2 @@
 #!/bin/bash
-cat > \*\\'"Best School"\'\\*$\?\*\*\*\*\*:) | "Here is the text" ^C 
+echo 'Best School' >> \*\\'"Best School"\'\\*$\?\*\*\*\*\*:) 
