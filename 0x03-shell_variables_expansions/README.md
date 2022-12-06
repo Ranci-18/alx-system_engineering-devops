@@ -1,5 +1,5 @@
 1.Script that creates an alias
-2.
+2.script that prints hello user/the current Linux user
 3.
 4.
 5.
