@@ -3,7 +3,7 @@
 3.script looks into action directory as the last directory
 4.script that counts the number of directories in the PATH
 5.script that lists all local variables and environment variables, and functions
-6.
+6.script that creates a new local variable
 7.
 8.
 9.
