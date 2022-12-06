@@ -4,7 +4,7 @@
 4.script that counts the number of directories in the PATH
 5.script that lists all local variables and environment variables, and functions
 6.script that creates a new local variable
-7.
+7.script that creates a new global variable
 8.
 9.
 10.
