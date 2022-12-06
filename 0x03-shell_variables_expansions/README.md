@@ -2,7 +2,7 @@
 2.script that prints hello user/the current Linux user
 3.script looks into action directory as the last directory
 4.script that counts the number of directories in the PATH
-5.
+5.script that lists all local variables and environment variables, and functions
 6.
 7.
 8.
