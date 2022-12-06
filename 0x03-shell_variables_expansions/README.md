@@ -1,6 +1,6 @@
 1.Script that creates an alias
 2.script that prints hello user/the current Linux user
-3.
+3.script looks into action directory as the last directory
 4.
 5.
 6.
