@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# displays content of /etc/passwd using while loop and IFS,
+# in the form of a story
+
+while IFS=: read -r line
+do
+	USERNAME=$(echo "$line" | cut -d ':' -f 1)
+	GROUP_ID=$(echo "$line" | cut -d ':' -f 4)
+	HOME_DIRECTORY=$(echo "$line" | cut -d ':' -f 6)
+	COMMAND=$(echo "$line" | cut -d ':' -f 7)
+	USER_ID=$(echo "$line" | cut -d ':' -f 3)
+	PASSWORD=$(echo "$line" | cut -d ':' -f 2)
+	USER_ID_INFO=$(echo "$line" | cut -d ':' -f 5)
+
+	echo -n "The $USERNAME is part of the $GROUP_ID gang, "
+	echo -n "lives in $HOME_DIRECTORY and rides $COMMAND. "
+	echo -n "$USER_ID's place is protected by the passcode $PASSWORD, "
+	echo "more info about the user here: $USER_ID_INFO"
+
+done < "/etc/passwd"
