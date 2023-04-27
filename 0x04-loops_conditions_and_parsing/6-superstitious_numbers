@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# printing 1 - 20 with conditions using while loop and 'case'
+
+count=1
+while [ $count -lt 21 ]
+do
+	case "$count" in
+	4)
+		echo "$count"
+		echo 'bad luck from China'
+		;;
+	9)
+		echo "$count"
+		echo 'bad luck from Japan'
+		;;
+	17)
+		echo "$count"
+		echo 'bad luck from Italy'
+		;;
+	*)
+		echo "$count"
+		;;
+	esac
+	((count++))
+done
