@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# displaying the content of current directory in list form after the first dash
+
+for _ in *
+do
+	echo "$_" | cut -d '-' -f 2
+done
