@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# script displays lines containing bash in all running processes from '1-list_your_processes'
+# script displays PID with the process name of bash processes
 
-ps auxf | grep bash
+pgrep -l bash
