@@ -12,7 +12,7 @@ do
 	PASSWORD=$(echo "$line" | cut -d ':' -f 2)
 	USER_ID_INFO=$(echo "$line" | cut -d ':' -f 5)
 
-	echo -n "The $USERNAME is part of the $GROUP_ID gang, "
+	echo -n "The user $USERNAME is part of the $GROUP_ID gang, "
 	echo -n "lives in $HOME_DIRECTORY and rides $COMMAND. "
 	echo -n "$USER_ID's place is protected by the passcode $PASSWORD, "
 	echo "more info about the user here: $USER_ID_INFO"
