@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# bash script displaying its own process
+
+echo $$
