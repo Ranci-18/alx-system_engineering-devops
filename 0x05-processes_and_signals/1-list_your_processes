@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# displays all currently running processes for all users,
+# with or without TTY in a user-oriented format and showing hierarchy
+
+ps auxf
