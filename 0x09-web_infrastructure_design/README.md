@@ -1,11 +1,11 @@
 Project tasks for web infrastructure design. 
 Core concepts being explored:
-	DNS
-	Monitoring
-	Web Server
-	Netwrok basics
-	Load balancer
-	Server
+	DNS,
+	Monitoring,
+	Web Server,
+	Network basics,
+	Load balancer,
+	Server.
 
 Author:
 =======
