@@ -10,13 +10,14 @@ cat <<EOF > /etc/haproxy/haproxy.cfg
 frontend haproxy
     bind *:80
     mode http
-    default_backend web-backend
+    
+    default_backend rancidevtech.tech-backend
 
-backend web-backend
+backend rancidevtech.tech-backend
     mode http
     balance roundrobin
-    server web-01 206461-web-01:80 check
-    server web-02 206461-web-02:80 check
+    server 206461-web-01 3.54.236.25.73:80 check
+    server 206461-web-02 3.52.91.178.190:80 check
 EOF
 
 sudo service haproxy restart
