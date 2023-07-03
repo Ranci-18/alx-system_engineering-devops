@@ -8,7 +8,7 @@ apt-get install --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.8
 apt-get install haproxy=2.8.\* -y
 
-CONFIG_FILE="etc/haproxy/haproxy.cfg"
+CONFIG_FILE="/etc/haproxy/haproxy.cfg"
 INIT_FILE="/etc/default/haproxy"
 
 
@@ -21,6 +21,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
 fi
 
 cat <<EOF > "$CONFIG_FILE"
+#--rancidevtech.tech-params-begin--
 frontend rancidevtech.tech-frontend
     bind *:80
     mode http
@@ -31,6 +32,7 @@ backend rancidevtech.tech-backend
     balance roundrobin
     server 206461-web-01 3.54.236.25.73:80 check
     server 206461-web-02 3.52.91.178.190:80 check
+#--rancidevtech.tech-params-end--
 EOF
 
 if grep -q "ENABLED=0" "$INIT_FILE"; then
