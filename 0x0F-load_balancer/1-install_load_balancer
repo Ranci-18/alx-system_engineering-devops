@@ -6,6 +6,14 @@ apt-get -y install --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.8
 apt-get -y install haproxy=2.8.\*
 
+if [ ! -d /etc/haproxy ]; then
+    mkdir /etc/haproxy
+fi
+
+if [ ! -f /etc/haproxy/haproxy.cfg ]; then
+    touch /etc/haproxy/haproxy.cfg
+fi
+
 cat <<EOF > /etc/haproxy/haproxy.cfg
 frontend rancidevtech.tech-frontend
     bind *:80
@@ -25,5 +33,8 @@ else
     echo "ENABLED=1" >> /etc/default/haproxy
 fi
 
-
-service haproxy restart
+if [ "$(pgrep -c haproxy) -le 0" ]; then
+    service haproxy start
+else
+    service haproxy restart
+fi
