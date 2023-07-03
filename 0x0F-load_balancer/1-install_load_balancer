@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# script to configure HAproxy to send traffic to web-01 and web-02
+# distribute requests using a roundrobin algorithm
+apt-get -y update
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.8
+apt-get -y install haproxy=2.8.\*
+
+cat <<EOF > /etc/haproxy/haproxy.cfg
+frontend haproxy
+    bind *:80
+    mode http
+    default_backend web-backend
+
+backend web-backend
+    mode http
+    balance roundrobin
+    server web-01 206461-web-01: 80 check
+    server web-02 206461-web-02: 80-check
+EOF
+
+sudo service haproxy restart
