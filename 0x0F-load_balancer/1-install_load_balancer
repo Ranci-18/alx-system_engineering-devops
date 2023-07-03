@@ -2,7 +2,7 @@
 # script to configure HAproxy to send traffic to web-01 and web-02
 # distribute requests using a roundrobin algorithm
 apt-get -y update
-apt-get install --no-install-recommends software-properties-common
+apt-get -y install --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.8
 apt-get -y install haproxy=2.8.\*
 
