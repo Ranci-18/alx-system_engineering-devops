@@ -5,8 +5,8 @@ apt-get -y update
 
 apt-get install --no-install-recommends software-properties-common
 
-add-apt-repository -y ppa:vbernat/haproxy-2.8
-apt-get install haproxy=2.8.\* -y
+add-apt-repository -y ppa:vbernat/haproxy-2.4
+apt-get -y install haproxy
 
 CONFIG_FILE="/etc/haproxy/haproxy.cfg"
 INIT_FILE="/etc/default/haproxy"
@@ -35,8 +35,8 @@ backend rancidevtech.tech-backend
 #--rancidevtech.tech-params-end--
 EOF
 
-if grep -q "ENABLED=0" "$INIT_FILE"; then
-    sed -i 's/ENABLED=0/ENABLED=1/' "$INIT_FILE"
+if grep -qE '^ENABLED=[01]$' "$INIT_FILE"; then
+    sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
 else
     echo "ENABLED=1" >> "$INIT_FILE"
 fi
