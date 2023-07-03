@@ -19,6 +19,11 @@ backend rancidevtech.tech-backend
     server 206461-web-02 3.52.91.178.190:80 check
 EOF
 
-sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+if grep -q "ENABLED=0" /etc/default/haproxy; then
+    sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+else
+    echo "ENABLED=1" >> /etc/default/haproxy
+fi
 
-sudo service haproxy restart
+
+service haproxy restart
