@@ -7,16 +7,18 @@ add-apt-repository -y ppa:vbernat/haproxy-2.8
 apt-get -y install haproxy=2.8.\*
 
 cat <<EOF > /etc/haproxy/haproxy.cfg
-frontend haproxy
+frontend rancidevtech.tech-frontend
     bind *:80
     mode http
     
     default_backend rancidevtech.tech-backend
 
 backend rancidevtech.tech-backend
-        balance roundrobin
+    balance roundrobin
     server 206461-web-01 3.54.236.25.73:80 check
     server 206461-web-02 3.52.91.178.190:80 check
 EOF
+
+sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 
 sudo service haproxy restart
