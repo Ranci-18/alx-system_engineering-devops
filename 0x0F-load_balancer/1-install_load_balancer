@@ -2,19 +2,25 @@
 # script to configure HAproxy to send traffic to web-01 and web-02
 # distribute requests using a roundrobin algorithm
 apt-get -y update
-apt-get -y install --no-install-recommends software-properties-common
+
+apt-get install --no-install-recommends software-properties-common
+
 add-apt-repository -y ppa:vbernat/haproxy-2.8
-apt-get -y install haproxy=2.8.\*
+apt-get install haproxy=2.8.\* -y
 
-if [ ! -d /etc/haproxy ]; then
-    mkdir /etc/haproxy
+CONFIG_FILE="etc/haproxy/haproxy.cfg"
+INIT_FILE="/etc/default/haproxy"
+
+
+if [ ! -f "$INIT_FILE" ]; then
+    touch "$INIT_FILE"
 fi
 
-if [ ! -f /etc/haproxy/haproxy.cfg ]; then
-    touch /etc/haproxy/haproxy.cfg
+if [ ! -f "$CONFIG_FILE" ]; then
+    touch "$CONFIG_FILE"
 fi
 
-cat <<EOF > /etc/haproxy/haproxy.cfg
+cat <<EOF > "$CONFIG_FILE"
 frontend rancidevtech.tech-frontend
     bind *:80
     mode http
@@ -27,10 +33,10 @@ backend rancidevtech.tech-backend
     server 206461-web-02 3.52.91.178.190:80 check
 EOF
 
-if grep -q "ENABLED=0" /etc/default/haproxy; then
-    sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+if grep -q "ENABLED=0" "$INIT_FILE"; then
+    sed -i 's/ENABLED=0/ENABLED=1/' "$INIT_FILE"
 else
-    echo "ENABLED=1" >> /etc/default/haproxy
+    echo "ENABLED=1" >> "$INIT_FILE"
 fi
 
 if [ "$(pgrep -c haproxy)" -le 0 ]; then
