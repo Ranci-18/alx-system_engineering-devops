@@ -19,21 +19,7 @@ fi
 if [ ! -f "$CONFIG_FILE" ]; then
     touch "$CONFIG_FILE"
 fi
-
-cat <<EOF > "$CONFIG_FILE"
-#--rancidevtech.tech-params-begin--
-frontend rancidevtech.tech-frontend
-    bind *:80
-    mode http
-    
-    default_backend rancidevtech.tech-backend
-
-backend rancidevtech.tech-backend
-    balance roundrobin
-    server 206461-web-01 3.54.236.25.73:80 check
-    server 206461-web-02 3.52.91.178.190:80 check
-#--rancidevtech.tech-params-end--
-EOF
+echo -e "\nfrontend rancidevtech.tech-frontend \n\tbind *:80 \n\tmode http \n\tdefault_backend rancidevtech.tech-backend \n\nbackend rancidevtech.tech-backend \n\tbalance roundrobin \n\tserver 206461-web-01 54.236.25.73:80 check\n\tserver 206461-web-02 52.91.178.190:80 check" >> "$CONFIG_FILE" 
 
 if grep -qE '^ENABLED=[01]$' "$INIT_FILE"; then
     sed -i 's/^ENABLED=0$/ENABLED=1/' "$INIT_FILE"
