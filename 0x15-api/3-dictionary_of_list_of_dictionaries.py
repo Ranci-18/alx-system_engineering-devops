@@ -33,9 +33,9 @@ def json_export_all():
                 dct = {}
                 TASK_TITLE = title
                 TASK_COMPLETED_STATUS = status
+                dct["username"] = USERNAME
                 dct["task"] = TASK_TITLE
                 dct["completed"] = TASK_COMPLETED_STATUS
-                dct["username"] = USERNAME
                 lst_dct.append(dct)
 
                 data["{}".format(USER_ID)] = lst_dct
