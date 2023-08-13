@@ -1,3 +1,4 @@
+![Nginx Server Down](71LxIfqkLTL.jpg)
 Issue Summary
 The duration of the outage was recorded from 13:18 to 14:18 EAT on the 13th August, 2023.
 The service that was down was the nginx server, which led to complete inaccessibility of the website resources to all users.
